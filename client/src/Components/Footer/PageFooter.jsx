@@ -5,7 +5,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 
 function PageFooter() {
   return (
-    <div id='pageFooter' className='bg-[#ffffff]'>
+    <div id='pageFooter' className='bg-[#ffffff] h-[400px]'>
        <div className="max-w-[980px] w-[100%] m-auto">
             <ul className='flex flex-wrap p-0 gap-x-3'>
                 <li><a href="#">English (UK)</a></li>

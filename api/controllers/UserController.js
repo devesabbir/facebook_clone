@@ -130,3 +130,36 @@ export const VerifyUser = async (req,res,next) => {
        next(error); 
     }
 }
+
+
+// LoggedIn 
+export const LoggedInUser = async (req,res,next) => {
+    try {
+      const bearer_token =  req.headers.authorization
+    
+      if(!bearer_token){
+         res.status(401).json({ error: 'Unauthorized' })
+        
+      }
+     
+      if( bearer_token ) {
+          if(bearer_token.length > 6) { 
+              let token = bearer_token.split(' ')[1]
+              const decode = jwt.verify(token, process.env.SECRET_KEY)
+              if(!decode) {
+                res.status(400).json({ error: "Invalid Token" })
+              }
+ 
+             if(decode){
+                const decodeUser = await User.findById(decode.id)
+                res.status(200).json({success:true, data:decodeUser})
+             }
+          }
+         
+          
+      }
+
+    } catch (error) {
+       console.log(error);
+    }
+}

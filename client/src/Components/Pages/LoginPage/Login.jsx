@@ -5,12 +5,16 @@ import { useState } from 'react';
 import { CreateAlert } from '../../../utility/Alert';
 import axios from 'axios'
 import Cookies from 'js-cookie';
+import { Navigate } from 'react-router-dom';
+import { useContext } from 'react';
+import AuthContext from '../../../States/Context';
 
 
 // assets
 const facebookSvg = 'https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg'
 
 function Login() {
+  const {dispatch} = useContext(AuthContext)
   const [modal, setModal] = useState(false)
 
   const [input, setInput] = useState({
@@ -55,6 +59,8 @@ function Login() {
                }
                if(res.data.data.isVerified){
                  Cookies.set('token', res.data.token)
+                 dispatch({type:"LOG-IN"})
+                 Navigate('/')
                }
              }        
            )

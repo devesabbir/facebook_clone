@@ -4,7 +4,7 @@ import AuthContext from "./Context"
 
 
 const initialState = {
-    isUserLoggedIn : false,
+    isUserLoggedIn :false,
     user:{}
 }
 

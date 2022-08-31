@@ -26,11 +26,9 @@ function VerifyPage() {
    },[params,navigate])
 
 
-
   return (
     <div>
-        <h1 className="text-4xl">Verify Your Account</h1>
-   
+        <h1 className="text-4xl">Verify Your Account</h1>  
     </div>
   )
 }
