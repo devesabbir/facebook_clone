@@ -24,7 +24,9 @@ function App() {
                 }
            }).then( res => {
                dispatch({type:"LOG-IN", payload:res.data.data})
-           })
+           }).catch(err => {
+               console.log(err);
+           });
       } catch (error) {
           
       }

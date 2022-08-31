@@ -59,7 +59,7 @@ function Login() {
                }
                if(res.data.data.isVerified){
                  Cookies.set('token', res.data.token)
-                 dispatch({type:"LOG-IN"})
+                 dispatch({type:"LOG-IN", payload:res.data.data})
                  Navigate('/')
                }
              }        
