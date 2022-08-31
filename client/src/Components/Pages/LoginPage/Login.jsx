@@ -63,7 +63,15 @@ function Login() {
                  Navigate('/')
                }
              }        
-           )
+           ).catch(err => {
+               if(err.response.status === 404){
+                 CreateAlert('','Inavalid User!', 'error')
+               }
+
+               if(err.response.status === 401){
+                CreateAlert('','Wrong Password!', 'warning')
+               }
+           })
         } catch (error) {
           
         }
