@@ -3,6 +3,7 @@ import { useReducer } from "react"
 import AuthContext from "./Context"
 
 
+
 const initialState = {
     isUserLoggedIn :false,
     user:{}
@@ -19,7 +20,8 @@ const reducer = (state, action) => {
          case 'LOG-OUT':
              return ({
                 ...state,
-                isUserLoggedIn:false
+                isUserLoggedIn:false,
+                
              })
       
         default:

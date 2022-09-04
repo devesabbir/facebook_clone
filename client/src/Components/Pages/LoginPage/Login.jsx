@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { CreateAlert } from '../../../utility/Alert';
 import axios from 'axios'
 import Cookies from 'js-cookie';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useContext } from 'react';
 import AuthContext from '../../../States/Context';
 
@@ -110,7 +110,7 @@ function Login() {
                  </form>
                </div>
                 <div>
-                  <p ><a className='text-[14px] text-[#1877f2] font-[400] no-underline' href="#">Forgotten password?</a></p>
+                  <p ><Link className='text-[14px] text-[#1877f2] font-[400] no-underline' to='/forgotpassword'>Forgotten password?</Link></p>
                 </div>
 
                  <div className="line flex items-center border-b-[1px] border-b-[#dadde1] my-[20px]">  

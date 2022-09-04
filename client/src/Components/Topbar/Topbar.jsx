@@ -13,9 +13,24 @@ import GamingIcon from '../../Icons/GamingIcon';
 import MenuIcon from '../../Icons/MenuIcon';
 import MessengerIcon from '../../Icons/MessengerIcon';
 import NotificationIcon from '../../Icons/NotificationIcon';
-export const userPhoto = 'https://i.ibb.co/6ZTkkF5/Sabbir.jpg'
+import Cookies from 'js-cookie';
+import { useContext } from 'react';
+import AuthContext from '../../States/Context';
+export const userPhoto = 'https://i.ibb.co/6ZTkkF5/Sabbir.jpg';
+
+
 
 function Topbar() {
+
+   const { dispatch } = useContext(AuthContext)
+
+   const handleLogOut = () => {
+       Cookies.remove('token')
+       dispatch({
+          type: 'LOG-OUT'
+       })
+    }
+ 
   return (
     <div className='sticky top-0 left-0 z-[999] border-b-[2px] border-[#38393a] bg-[#242526] '>
         <div className="topbar flex justify-center items-center">
@@ -50,7 +65,7 @@ function Topbar() {
                         <Menu menuButton={<MenuButton>
                              <img className='max-w-[40px] w-[100%] h-[40px] object-cover rounded-[50%]' src={userPhoto} alt="" />
                         </MenuButton>}>
-                            <MenuItem> Menu Item </MenuItem>
+                            <MenuItem onClick={handleLogOut}> Log Out </MenuItem>
                         </Menu>
                      </ul>
                 </div>

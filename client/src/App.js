@@ -2,6 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useContext, useEffect } from "react";
 import { Routes,Route } from "react-router-dom";
+import ForgotPass from "./Components/Pages/ForgotPass/ForgotPass";
 import HomePage from "./Components/Pages/HomePage/HomePage";
 import Login from "./Components/Pages/LoginPage/Login";
 import VerifyPage from "./Components/Pages/Verifypage/VerifyPage";
@@ -12,6 +13,7 @@ import AuthContext from "./States/Context";
 
 
 function App() {
+     
    const {dispatch} = useContext(AuthContext)
 
    useEffect(() => {
@@ -36,8 +38,9 @@ function App() {
    return (
         <Routes>
              <Route path="/" element={ <Authchecker><HomePage/></Authchecker> }/> 
-             <Route path="/login" element={<RedirectAuth><Login/></RedirectAuth> } />
-             <Route path="/user/:id/verify/:token" element={<VerifyPage/>} />
+             <Route path="/login" element={ <RedirectAuth><Login/></RedirectAuth> } />
+             <Route path="/user/:id/verify/:token" element={ <VerifyPage/> } />
+             <Route path="/forgotpassword" element={ <ForgotPass/> } />
         </Routes>    
     
    );
