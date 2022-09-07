@@ -163,3 +163,51 @@ export const LoggedInUser = async (req,res,next) => {
        console.log(error);
     }
 }
+
+
+
+//  Recover Password Request 
+export const RecoverPasswordRequest = async (req, res, next) => {  
+    const { email } = req.body
+
+    try {
+       const isExist = await User.findOne({ email: email }); 
+       if (!isExist) {
+          res.status(404).json({ message: 'User Not Found!' });
+       }
+
+       if (isExist) {
+          const token = CreateToken({id:isExist._id})
+          const resetLink = `http://localhost:${process.env.R_PORT}/resetpassword/${token}`
+
+          SendMail(isExist.email,'Password Recovery Link',resetLink)
+          res.status(200).json({message:'Reset Password Link Sent!', user: isExist})
+       }
+ 
+    } catch (error) {
+        
+    }
+}
+
+
+//  Reset Password 
+export const ResetPassword = async (req,res,next) => {
+    const { token, password } = req.body 
+    try {
+        jwt.verify(token, process.env.SECRET_KEY, async (err, data) => {
+         if (err) {  
+             res.status(401).json({ message: 'Invalid Request' })    
+         }
+         if( data){
+            const salt = bcryptjs.genSaltSync(10)
+            const hashpass = bcryptjs.hashSync(password,salt)
+
+            await User.findByIdAndUpdate(data.id, {password:hashpass})
+            res.status(200).json({ message: 'OK, Password updated!' }) 
+         }
+      })
+      
+    } catch (error) {
+        
+    } 
+}

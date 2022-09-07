@@ -5,6 +5,7 @@ import { Routes,Route } from "react-router-dom";
 import ForgotPass from "./Components/Pages/ForgotPass/ForgotPass";
 import HomePage from "./Components/Pages/HomePage/HomePage";
 import Login from "./Components/Pages/LoginPage/Login";
+import ResetPassword from "./Components/Pages/ResetPassword/ResetPassword";
 import VerifyPage from "./Components/Pages/Verifypage/VerifyPage";
 import Authchecker from "./Middlewares/AuthChecker";
 import RedirectAuth from "./Middlewares/RedirectAuth";
@@ -41,6 +42,7 @@ function App() {
              <Route path="/login" element={ <RedirectAuth><Login/></RedirectAuth> } />
              <Route path="/user/:id/verify/:token" element={ <VerifyPage/> } />
              <Route path="/forgotpassword" element={ <ForgotPass/> } />
+             <Route path="/resetpassword/:token" element={ <ResetPassword/> } />
         </Routes>    
     
    );
