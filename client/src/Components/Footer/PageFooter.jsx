@@ -4,6 +4,8 @@ import './PageFooter.scss'
 import { AiOutlinePlus } from "react-icons/ai";
 
 function PageFooter() {
+  
+
   return (
     <div id='pageFooter' className='bg-[#ffffff] h-[400px]'>
        <div className="max-w-[980px] w-[100%] m-auto">

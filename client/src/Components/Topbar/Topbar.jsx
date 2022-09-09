@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Facebook from '../../Icons/Facebook'
 import './Topbar.scss'
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
@@ -36,7 +37,7 @@ function Topbar() {
         <div className="topbar flex justify-center items-center">
              <div className="left grow flex items-center">
                  <div className="logo">
-                     <a href="#"><Facebook/></a>
+                     <Link to='/'><Facebook/></Link>
                  </div>
                  <div className="search">
                      <label className='flex items-center"' htmlFor="search">
@@ -62,7 +63,7 @@ function Topbar() {
                         <li><a href="#"><MenuIcon/></a></li>
                         <li><a href="#"><MessengerIcon/></a></li>
                         <li><a href="#"><NotificationIcon/></a></li>
-                        <Menu menuButton={<MenuButton>
+                        <Menu menuClassName='sub_menu-logo' menuButton={<MenuButton>
                              <img className='max-w-[40px] w-[100%] h-[40px] object-cover rounded-[50%]' src={userPhoto} alt="" />
                         </MenuButton>}>
                             <MenuItem onClick={handleLogOut}> Log Out </MenuItem>

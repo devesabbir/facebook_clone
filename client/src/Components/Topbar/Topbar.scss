@@ -67,6 +67,24 @@
                 fill: #e4e6eb;
              }
           }
+          .sub_menu-logo{
+            margin-top: 15px !important;
+            left: -141px !important;
+            width: 150px;
+            padding: 10px;
+            background-color: #242526;
+            border-radius: 5px;
+
+            li{
+              color: #fff;
+              background-color:#242526;
+
+              &:hover{
+                 color: #fff;
+                 background-color:#242526;
+              }
+            }
+          }
         }
      } 
      }

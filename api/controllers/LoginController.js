@@ -8,7 +8,9 @@ dotenv.config()
 export const LoginController = async (req, res, next) => {
     let {email, password} = req.body
     try {
+        
        const loginUser = await User.findOne({email}) 
+
        if(!loginUser) {
           res.status(404).json({ message: 'Your Email Not found!'})
         } 
@@ -21,7 +23,7 @@ export const LoginController = async (req, res, next) => {
 
           if(passCheck){
               // Token
-              const token = jwt.sign({id:loginUser._id}, process.env.SECRET_KEY,{expiresIn:'20m'})
+              const token = jwt.sign({id:loginUser._id}, process.env.SECRET_KEY,{expiresIn:'1d'})
 
             let {_id, isAdmin, password, ...loginUserInfo} = loginUser._doc  
               res.cookie('access_token',token).status(200).json({ 
